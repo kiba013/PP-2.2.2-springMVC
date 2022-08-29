@@ -9,7 +9,7 @@ import web.service.CarService;
 
 @Controller
 public class HomeController {
-    @GetMapping("/home")
+    @GetMapping()
     public String homePage() {
         return "index";
     }
@@ -17,7 +17,7 @@ public class HomeController {
     @GetMapping("/cars")
     public String getCars(@RequestParam(value = "count", defaultValue = "5") int count,
                           Model model) {
-        model.addAttribute("car", new CarService().getCars(count));
+        model.addAttribute("car", new CarService().getCarList(count));
         return "car";
     }
 }
